@@ -20,7 +20,6 @@ function initializeDatabasesPool(accountname){
         mongoMgr.ExcuteQuery(db,"DBCONFIG",[],query,{} , function (error, result) {
             if(error) throw error
             
-            
             for(var i=0;i<result.length;i++){
                var config =result[i];
                var accpool = oracledb.createPool ({
@@ -38,6 +37,9 @@ function initializeDatabasesPool(accountname){
                Promise.all([accpool])
                .then(function(pools) {
                  console.log("Pool Created")
+                 for(var i=0;i<result.length;i++){
+                  console.log(pools[i].poolAlias); // hr
+                 }
                })
                .catch(function(err) {
                  console.log("ERROR in Pool creation"+err);

@@ -13,8 +13,8 @@ function GetConnection(poolNme,callback){
 
 }
 
-function ExcuteSql(connection,sql , params ,callback){
-   connection.execute(sql, params, function(error, result) {
+function ExcuteSql(connection,sql , params ,fmt,callback){
+   connection.execute(sql, params,fmt , function(error, result) {
 
             if (error) { 
                 console.log("errorOR: Unable To Excute Query: ", error);

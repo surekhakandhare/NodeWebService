@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const compression = require('compression');
 const stock = require('./router/stock.router');
 const auth = require('./router/authenticate.router');
+const log = require('./router/logger.router');
 const dbInit=require('./dbmanger/oracle.pool');
 const app = express();
 const hostname = 'localhost';
@@ -16,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 //app.use("/stock",stock);
  app.use("/auth",auth);
-
+ app.use("/log",log);
 
 // listen for requests
 app.listen(port, hostname, () => {
