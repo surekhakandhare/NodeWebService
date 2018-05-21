@@ -28,7 +28,7 @@ function ExcuteQuery(db,table,column,query,sort,callback){
         var srt = [sort[i],1];
         sort.push(srt);
     }
-    
+ 
     db.collection(table).find(query).project(projection).sort(sort).toArray(function(error, documents) {
         if( error )  return callback(error)
         else return callback(null, documents);

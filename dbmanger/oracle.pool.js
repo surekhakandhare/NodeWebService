@@ -9,7 +9,7 @@ function initializeDatabasesPool(accountname){
     query["status"]=1;
     if(accountname!='')
     query["accountname"]=accountname;
-    query["db"]="ORACLE";
+    query["dbname"]="ORACLE";
     query["dbtype"]="TRNS";
     query["environment"]="PRODUCTION";
  
@@ -19,7 +19,7 @@ function initializeDatabasesPool(accountname){
          var db = mongoMgr.GetConnection(client,mongodbName);
         mongoMgr.ExcuteQuery(db,"DBCONFIG",[],query,{} , function (error, result) {
             if(error) throw error
-            
+            console.log(result);
             for(var i=0;i<result.length;i++){
                var config =result[i];
                var accpool = oracledb.createPool ({
